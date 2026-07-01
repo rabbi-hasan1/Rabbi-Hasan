@@ -7,12 +7,12 @@ import MobileNav from "./MobileNav";
 import { ModeToggle } from "./ModeToogle";
 import NavLinks from "./Navlinks";
 export default function Navbar() {
-  const isLoggedIn: boolean = true;
+  const isLoggedIn: boolean = false;
   const router = useRouter();
   const [open, setOpen] = useState(false);
   return (
     <>
-      <header className="sticky top-0 z-50 w-full border-b dark:border-gray-800 border-gray-300 backdrop-blur-lg bg-white/20 dark:bg-black/60">
+      <header className="sticky top-0 z-30 w-full  border-b dark:border-gray-800 border-gray-300 backdrop-blur-3xl  bg-white/20 dark:bg-black/60">
         <div className="mx-auto flex h-15 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link
             href="/"
@@ -63,7 +63,13 @@ export default function Navbar() {
         </div>
       </header>
 
-      {open && <MobileNav navLinks={NavLinks} onClose={() => setOpen(false)} />}
+      {open && (
+        <MobileNav
+          isOpen={open}
+          navLinks={NavLinks}
+          onClose={() => setOpen(false)}
+        />
+      )}
     </>
   );
 }
